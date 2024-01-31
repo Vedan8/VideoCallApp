@@ -15,7 +15,7 @@ def register(request):
             return render(request,'register.html',{'error':error_message})
     return render(request,'register.html')
 
-def login(request):
+def user_login(request):
     if request.method=='POST':
         username=request.POST.get('username')
         password=request.POST.get('password')
@@ -31,3 +31,23 @@ def login(request):
 @login_required
 def dashboard(request):
     return render(request,'dashboard.html')
+
+@login_required
+def videoCAll(request):
+    return render(request,'videoCall.html',{'name':request.user.username})
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect("/login")
+
+@login_required
+def join_call(request):
+    return render(request,'join_room.html')
+
+@login_required
+def join_room(request):
+    if request.method=='POST':
+        roomid=request.POST['roomID']
+        return redirect("http://127.0.0.1:8000/videoCall/?roomID="+roomid)
+    return render(request,'join_room.html')

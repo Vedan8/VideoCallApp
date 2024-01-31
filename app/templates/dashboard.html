@@ -82,15 +82,15 @@
         
         <div class="options">
             <div class="option">
-                <a class="action-btn" href="/new-meeting">New Meeting</a>
+                <a class="action-btn" href="{% url 'videoCall' %}">New Meeting</a>
             </div>
             
             <div class="option">
-                <a class="action-btn" href="/join-meeting">Join Meeting</a>
+                <a class="action-btn" href="{% url 'join_room' %}">Join Meeting</a>
             </div>
             
             <div class="option">
-                <button class="logout-btn">Logout</button>
+                <a href="{% url 'user_logout' %}"><button class="logout-btn">Logout</button></a>
             </div>
         </div>
     </div>
